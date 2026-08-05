@@ -1,4 +1,4 @@
-AI Chatbot with FastAPI & Groq
+# AI Chatbot with FastAPI & Groq
 
 A conversational AI chatbot built with **Python**, **FastAPI**, **JavaScript**, **HTML**, and **CSS**, powered by the **Groq LLM API**.
 
@@ -6,20 +6,20 @@ This project demonstrates frontend-backend communication, REST APIs, prompt engi
 
 ---
 
- Features
+ # Features
 
-* 💬 AI-powered conversations using the Groq API
-* ⚡ FastAPI backend
-* 🎨 Responsive HTML/CSS frontend
-* 🔄 Real-time communication with Fetch API
-* 📝 Markdown rendering for AI responses
-* 🧠 System prompts for AI behavior customization
-* 🛠 Modular project structure (routers, services, models, config)
-* 🌐 CORS-enabled frontend and backend integration
+*  AI-powered conversations using the Groq API
+*  FastAPI backend
+*  Responsive HTML/CSS frontend
+*  Real-time communication with Fetch API
+*  Markdown rendering for AI responses
+*  System prompts for AI behavior customization
+*  Modular project structure (routers, services, models, config)
+*  CORS-enabled frontend and backend integration
 
 ---
 
-Tech Stack
+# Tech Stack
 
 * Python
 * FastAPI
@@ -54,7 +54,7 @@ project1/
 
 ---
 
-## 🚀 Installation
+# Installation
 
 Clone the repository:
 
@@ -126,7 +126,7 @@ http://127.0.0.1:8000/
 
 ---
 
-## 🚧 Future Improvements
+# Future Improvements
 
 * User authentication
 * Chat history database
@@ -137,7 +137,7 @@ http://127.0.0.1:8000/
 
 ---
 
-## 👨‍💻 Author
+Author
 
 **Olayinka Israel**
 
