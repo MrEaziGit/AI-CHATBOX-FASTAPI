@@ -110,7 +110,7 @@ http://127.0.0.1:8000/
 
 ## 📸 Preview
 
-*Add screenshots or a short GIF of the chatbot here.*
+![AI Chatbot Screenshot](assets/chatbot-preview.png)
 
 ---
 
@@ -142,3 +142,5 @@ Author
 **Olayinka Israel**
 
 GitHub: https://github.com/MrEaziGit
+
+
