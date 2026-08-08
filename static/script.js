@@ -44,8 +44,11 @@ async function send() {
 
     let data = await res.json();
 
-    typing.textContent = "Bot: " + data.reply;
-
+    typing.innerHTML = "<strong>Bot:</strong><br>" + marked.parse(data.reply);
+    typing.querySelectorAll("pre code").forEach((block) => {
+        
+        hljs.highlightElement(block);
+    });
     sendBtn.disabled = false;
     chatBox.scrollTop = chatBox.scrollHeight;
 }

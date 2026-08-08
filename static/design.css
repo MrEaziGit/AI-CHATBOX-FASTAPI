@@ -23,11 +23,11 @@ h2 {
 }
 
 .user {
-    color: blue;
+    color: black;
 }
 
 .bot {
-    color: green;
+    color: black;
 }
 
 .inputBox {
@@ -43,4 +43,17 @@ input {
 button {
     padding: 10px 20px;
     cursor: pointer;
+}
+
+.bot pre {
+    background: #f4f4f4;
+    color: black;
+    padding: 12px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.bot pre code {
+    color: inherit;
+    font-family: Consolas, monospace;
 }

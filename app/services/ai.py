@@ -1,20 +1,6 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
 import requests
-from fastapi.middleware.cors import CORSMiddleware
-import os
-from dotenv import load_dotenv
+from app.config import GROQ_API_KEY
 
-app = FastAPI()
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5500"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-    
-)
 conversation = [
     {
         "role": "system",
@@ -23,12 +9,6 @@ conversation = [
 ]
 
 
-class ChatRequest(BaseModel):
-    message: str
-
-load_dotenv()
-
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 print("KEY:", GROQ_API_KEY)
 
@@ -64,17 +44,3 @@ def ask_ai(message: str):
         "content": reply
     }) 
     return reply
-
-@app.get("/")
-def home():
-    return {"message": "AI Chatbot is running"}
-
-
-@app.post("/chat")
-def chat(chat_request: ChatRequest):
-    reply = ask_ai(chat_request.message)
-
-    return {
-        "user": chat_request.message,
-        "reply": reply
-    }
