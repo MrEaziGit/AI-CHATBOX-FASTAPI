@@ -110,7 +110,7 @@ http://127.0.0.1:8000/
 
 ## 📸 Preview
 
-![AI Chatbot Screenshot](assets/chatbot-preview.png)
+![Chatbox Preview](static/assets/chatbox-preview.png)
 
 ---
 
