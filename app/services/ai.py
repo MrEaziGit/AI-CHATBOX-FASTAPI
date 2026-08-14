@@ -1,18 +1,14 @@
-import requests
 from app.config import GROQ_API_KEY
+import requests 
+from app.database import get_messages, save_message
 
-conversation = [
-    {
-        "role": "system",
-        "content": "You are a friendly AI programming tutor. Explain programming concepts simply. Teach step by step and encourage the user to think instead of just giving answers."
-    }
-]
+SYSTEM_PROMPT = {
+    "role": "system",
+    "content": "You are a friendly AI programming tutor. Explain programming concepts simply. Teach step by step and encourage the user to think instead of just giving answers."
+}
 
 
-
-print("KEY:", GROQ_API_KEY)
-
-def ask_ai(message: str):
+def ask_ai(message: str, conversation_id: int):
     url = "https://api.groq.com/openai/v1/chat/completions"
 
     headers = {
@@ -20,27 +16,40 @@ def ask_ai(message: str):
         "Content-Type": "application/json"
     }
 
-    conversation.append({
+    messages = [SYSTEM_PROMPT]
+
+    history = get_messages(conversation_id)
+    messages.extend(history)
+
+    messages.append({
         "role": "user",
         "content": message
     })
-    print(conversation)
 
     data = {
         "model": "llama-3.1-8b-instant",
-        "messages": conversation
+        "messages": messages
     }
 
-    response = requests.post(url, headers=headers, json=data)
+    try:
+        response = requests.post(
+            url,
+            headers=headers,
+            json=data,
+            timeout=30
+        )
+
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print("AI REQUEST ERROR:", e)
+        return "Sorry, I'm having trouble connecting to the AI service, please try again in few"
     print("STATUS:", response.status_code)
     print("RESPONSE:", response.text)
 
-
-
     reply = response.json()["choices"][0]["message"]["content"]
 
-    conversation.append({
-        "role": "assistant",
-        "content": reply
-    }) 
+    save_message(conversation_id,"user", message)
+
+    save_message(conversation_id,"assistant", reply)
+
     return reply
